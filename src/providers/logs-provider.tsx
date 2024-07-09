@@ -19,7 +19,13 @@ export const LogsProvider = ({ children }: PropsWithChildren) => {
 	const [logs, setLogs] = useState<Log[]>([]);
 
 	const addLog = (log: Log) => {
-		setLogs((prevLogs) => [...prevLogs, log]);
+		setLogs((prevLogs) => {
+			const updatedLogs = [...prevLogs, log];
+			updatedLogs.sort(
+				(a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+			);
+			return updatedLogs;
+		});
 	};
 
 	return (

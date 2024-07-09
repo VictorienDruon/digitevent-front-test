@@ -8,9 +8,9 @@ type LogEntryProps = {
 
 export const LogEntry = ({ log }: LogEntryProps) => {
 	return (
-		<Stack>
-			<Text>{log.date.toLocaleDateString()}</Text>
-			<Heading>{log.title}</Heading>
+		<Stack gap="0">
+			<Text fontWeight="semibold">{log.date.toLocaleTimeString()}</Text>
+			<Heading fontWeight="semibold">{log.title}</Heading>
 			<Text>{log.description}</Text>
 		</Stack>
 	);

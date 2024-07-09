@@ -10,9 +10,19 @@ type CardProps = {
 
 export const Card = ({ title, description, onRefresh }: CardProps) => {
 	return (
-		<Stack px="8" py="4" borderWidth="1" borderRadius="xl" boxShadow="xl">
+		<Stack
+			h="1/2"
+			p="8"
+			gap="8"
+			bg="white"
+			borderWidth="1"
+			borderRadius="xl"
+			boxShadow="xl"
+		>
 			<HStack justifyContent="space-between">
-				<Heading fontWeight="semibold">{title}</Heading>
+				<Heading fontWeight="semibold" textDecoration="underline">
+					{title}
+				</Heading>
 				<button onClick={onRefresh}>
 					<Circle size="10" bg="red" borderWidth="1">
 						<ArrowDown />

@@ -2,10 +2,9 @@
 
 import { useLogs } from "@/providers/logs-provider";
 import { useFetchMathFact, useFetchDateFact } from "@/libs/numbers-api/hooks";
-import { Stack } from "@styled-system/jsx";
-import { Heading } from "@/components/ui";
+import { Box, Stack } from "@styled-system/jsx";
 import { Card } from "@/components/card";
-import { LogEntry } from "@/components/log-entry";
+import { LogsHistory } from "@/components/logs-history";
 
 const HomePage = () => {
 	const { logs, addLog } = useLogs();
@@ -27,27 +26,32 @@ const HomePage = () => {
 
 	return (
 		<main>
-			<Stack flexDir={["col", "row"]}>
-				<Stack>
-					<Card
-						title="Math Fact"
-						description={mathFact}
-						onRefresh={refreshMath}
-					/>
-					<Card
-						title="Date Fact"
-						description={dateFact}
-						onRefresh={refreshDate}
-					/>
-				</Stack>
+			<Box
+				display="flex"
+				w="screen"
+				h="screen"
+				justifyContent="center"
+				alignItems="center"
+				p="4"
+				bg="gray.300"
+			>
+				<Stack flexDir="row" maxW="6xl" h="full" mx="auto" gap="4">
+					<Stack w="1/2">
+						<Card
+							title="A cool Math Fact"
+							description={mathFact}
+							onRefresh={refreshMath}
+						/>
+						<Card
+							title="A cool Date Fact"
+							description={dateFact}
+							onRefresh={refreshDate}
+						/>
+					</Stack>
 
-				<Stack px="8" py="4" borderWidth="1" borderRadius="xl" boxShadow="xl">
-					<Heading>Logs</Heading>
-					{logs.map((log, index) => (
-						<LogEntry key={index} log={log} />
-					))}
+					<LogsHistory logs={logs} />
 				</Stack>
-			</Stack>
+			</Box>
 		</main>
 	);
 };
