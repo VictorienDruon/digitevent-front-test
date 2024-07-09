@@ -1,19 +1,39 @@
 "use client";
 
-import { Card } from "@/components/card";
 import { useFetchMath, useFetchDate } from "@/libs/numbers-api/hooks";
-import { css } from "@styled-system/css";
+import { Stack } from "@styled-system/jsx";
+import { Card } from "@/components/card";
 
 const HomePage = () => {
-	const { data, isPending } = useFetchDate();
+	const {
+		data: mathFact,
+		isPending: isMathPending,
+		refetch: refreshMath,
+	} = useFetchMath();
+	const {
+		data: dateFact,
+		isPending: isDatePending,
+		refetch: refreshDate,
+	} = useFetchDate();
 
-	if (isPending || !data) {
+	if (isMathPending || !mathFact || isDatePending || !dateFact) {
 		return <div>Loading...</div>;
 	}
 
 	return (
 		<main>
-			<Card title="Date Fact" description={data} />
+			<Stack>
+				<Card
+					title="Math Fact"
+					description={mathFact}
+					onRefresh={refreshMath}
+				/>
+				<Card
+					title="Date Fact"
+					description={dateFact}
+					onRefresh={refreshDate}
+				/>
+			</Stack>
 		</main>
 	);
 };
