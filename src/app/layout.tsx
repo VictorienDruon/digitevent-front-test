@@ -1,6 +1,8 @@
 import "@/styles/global.css";
 import { Inter } from "next/font/google";
+
 import { QueryProvider } from "@/providers/query-provider";
+import { LogsProvider } from "@/providers/logs-provider";
 
 import type { Metadata } from "next";
 
@@ -19,7 +21,9 @@ const RootLayout = ({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<QueryProvider>{children}</QueryProvider>
+				<QueryProvider>
+					<LogsProvider>{children}</LogsProvider>
+				</QueryProvider>
 			</body>
 		</html>
 	);

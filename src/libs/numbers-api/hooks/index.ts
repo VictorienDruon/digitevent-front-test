@@ -1,20 +1,33 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchMath, fetchDate } from "..";
+import { fetchMath as fetchMathFact, fetchDate as fetchDateFact } from "..";
+import type { Log } from "@/types/log";
 
-export function useFetchMath() {
+export function useFetchMathFact(addLog: (log: Log) => void) {
 	return useQuery({
 		queryKey: ["math"],
 		queryFn: async () => {
-			return await fetchMath();
+			const fact = await fetchMathFact();
+			addLog({
+				title: "Math Fact",
+				description: fact,
+				date: new Date(),
+			});
+			return fact;
 		},
 	});
 }
 
-export function useFetchDate() {
+export function useFetchDateFact(addLog: (log: Log) => void) {
 	return useQuery({
 		queryKey: ["dates"],
 		queryFn: async () => {
-			return await fetchDate();
+			const fact = await fetchDateFact();
+			addLog({
+				title: "Date Fact",
+				description: fact,
+				date: new Date(),
+			});
+			return fact;
 		},
 	});
 }
