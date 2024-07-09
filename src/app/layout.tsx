@@ -1,6 +1,8 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "@/styles/global.css";
+import { Inter } from "next/font/google";
+import { QueryProvider } from "@/providers/query-provider";
+
+import type { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -9,14 +11,18 @@ export const metadata: Metadata = {
 	description: "A front test for Digitevent",
 };
 
-export default function RootLayout({
+const RootLayout = ({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
-}>) {
+}>) => {
 	return (
 		<html lang="en">
-			<body className={inter.className}>{children}</body>
+			<body className={inter.className}>
+				<QueryProvider>{children}</QueryProvider>
+			</body>
 		</html>
 	);
-}
+};
+
+export default RootLayout;
