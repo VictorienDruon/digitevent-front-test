@@ -10,7 +10,7 @@ export function useFetchMathFact(addLog: (log: Log) => void) {
 			addLog({
 				title: "Math Fact",
 				description: fact,
-				date: new Date(),
+				createdAt: new Date(),
 			});
 			return fact;
 		},
@@ -25,7 +25,7 @@ export function useFetchDateFact(addLog: (log: Log) => void) {
 			addLog({
 				title: "Date Fact",
 				description: fact,
-				date: new Date(),
+				createdAt: new Date(),
 			});
 			return fact;
 		},

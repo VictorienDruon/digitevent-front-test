@@ -9,7 +9,7 @@ type LogEntryProps = {
 export const LogEntry = ({ log }: LogEntryProps) => {
 	return (
 		<Stack gap="0">
-			<Text fontWeight="semibold">{log.date.toLocaleTimeString()}</Text>
+			<Text fontWeight="semibold">{`${log.createdAt.toLocaleDateString()} ${log.createdAt.toLocaleTimeString()}`}</Text>
 			<Heading fontWeight="semibold">{log.title}</Heading>
 			<Text>{log.description}</Text>
 		</Stack>

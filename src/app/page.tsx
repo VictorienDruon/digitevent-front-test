@@ -9,18 +9,10 @@ import { LogsHistory } from "@/components/logs-history";
 const HomePage = () => {
 	const { logs, addLog } = useLogs();
 
-	const {
-		data: mathFact,
-		isPending: isMathPending,
-		refetch: refreshMath,
-	} = useFetchMathFact(addLog);
-	const {
-		data: dateFact,
-		isPending: isDatePending,
-		refetch: refreshDate,
-	} = useFetchDateFact(addLog);
+	const { data: mathFact, refetch: refreshMath } = useFetchMathFact(addLog);
+	const { data: dateFact, refetch: refreshDate } = useFetchDateFact(addLog);
 
-	if (isMathPending || !mathFact || isDatePending || !dateFact) {
+	if (!mathFact || !dateFact) {
 		return <div>Loading...</div>;
 	}
 

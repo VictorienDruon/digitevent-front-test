@@ -11,3 +11,7 @@ pnpm dev
 # or
 bun dev
 ```
+
+## Excerice
+
+The excercice guidelines can be found on this [link](https://wearedigitevent.notion.site/Digitevent-Front-Test-8f6ee862076c4df28f0853276ecaf229).

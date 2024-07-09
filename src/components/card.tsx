@@ -24,7 +24,11 @@ export const Card = ({ title, description, onRefresh }: CardProps) => {
 					{title}
 				</Heading>
 				<button onClick={onRefresh}>
-					<Circle size="10" bg="red" borderWidth="1">
+					<Circle
+						size="10"
+						bg={{ base: "red.400", _hover: "red.500", _active: "red.600" }}
+						borderWidth="1"
+					>
 						<ArrowDown />
 					</Circle>
 				</button>
